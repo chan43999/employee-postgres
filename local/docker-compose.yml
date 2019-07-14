@@ -5,7 +5,7 @@ services:
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    container_name: postgres-employee
+    container_name: postgres-employee-standalone
     environment:
       POSTGRES_DB: employee
       POSTGRES_USER: local
