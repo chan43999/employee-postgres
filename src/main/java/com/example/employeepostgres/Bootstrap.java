@@ -9,16 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class Bootstrap implements CommandLineRunner {
 
-  @Autowired
-  private EmployeeRepository employeeRepository;
+  @Autowired private EmployeeRepository employeeRepository;
 
   @Override
   public void run(String... args) throws Exception {
 
-    employeeRepository.save(Employee.builder()
-        .id(1l)
-        .firstName("Chan")
-        .lastName("Suttichujit")
-        .build());
+    employeeRepository.save(
+        Employee.builder().id(1l).firstName("Chan").lastName("Suttichujit").build());
   }
 }

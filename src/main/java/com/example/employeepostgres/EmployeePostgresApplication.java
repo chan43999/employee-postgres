@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EmployeePostgresApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EmployeePostgresApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(EmployeePostgresApplication.class, args);
+  }
 }

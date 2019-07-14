@@ -14,8 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Employee {
 
-  @Id
-  private Long id;
+  @Id private Long id;
 
   private String firstName;
   private String lastName;

@@ -13,34 +13,25 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class EmployeeControllerTest {
 
-  @Mock
-  private EmployeeService employeeService;
+  @Mock private EmployeeService employeeService;
 
-  @InjectMocks
-  private EmployeeController employeeController;
+  @InjectMocks private EmployeeController employeeController;
 
   @Test
   public void should_get_employee_when_get_employee_by_id_given_employee_id() {
 
-    //given
+    // given
     Long employeeId = 1l;
-    EmployeeDTO employeeDTO = EmployeeDTO.builder()
-        .firstName("firstName")
-        .lastName("lastName")
-        .build();
+    EmployeeDTO employeeDTO =
+        EmployeeDTO.builder().firstName("firstName").lastName("lastName").build();
     when(employeeService.getEmployeeById(employeeId)).thenReturn(employeeDTO);
 
-    //when
+    // when
     EmployeeDTO actualEmployeeDTO = employeeController.getEmployeeById(employeeId);
 
-    //then
-    EmployeeDTO expectEmployeeDTO = EmployeeDTO.builder()
-        .firstName("firstName")
-        .lastName("lastName")
-        .build();
+    // then
+    EmployeeDTO expectEmployeeDTO =
+        EmployeeDTO.builder().firstName("firstName").lastName("lastName").build();
     assertEquals(expectEmployeeDTO, actualEmployeeDTO);
-
   }
-
-
 }

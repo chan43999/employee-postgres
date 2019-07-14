@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeService {
 
-  @Autowired
-  private EmployeeRepository employeeRepository;
+  @Autowired private EmployeeRepository employeeRepository;
 
   public EmployeeDTO getEmployeeById(Long employeeId) {
-    Employee employee = employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Customer id "+ employeeId +" is not found"));
+    Employee employee =
+        employeeRepository
+            .findById(employeeId)
+            .orElseThrow(
+                () -> new ResourceNotFoundException("Customer id " + employeeId + " is not found"));
 
     return EmployeeDTO.builder()
         .firstName(employee.getFirstName())
