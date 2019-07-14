@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import com.example.employeepostgres.employee.dto.EmployeeDTO;
 import com.example.employeepostgres.employee.entity.Employee;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,13 +25,13 @@ public class EmployeeServiceTest {
   void shoudl_get_employee_when_get_employee_by_id_given_employee_id() {
 
     //given
-    int employeeId = 1;
+    Long employeeId = 1l;
     Employee employee = Employee.builder()
         .id(1l)
         .firstName("firstName")
         .lastName("lastName")
         .build();
-    when(employeeRepository.findById(1)).thenReturn(employee);
+    when(employeeRepository.findById(1l)).thenReturn(Optional.of(employee));
 
     //when
     EmployeeDTO actualEmployeeDTO = employeeService.getEmployeeById(employeeId);

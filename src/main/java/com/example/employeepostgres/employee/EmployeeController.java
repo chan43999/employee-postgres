@@ -14,7 +14,7 @@ public class EmployeeController {
   private EmployeeService employeeService;
 
   @GetMapping
-  public EmployeeDTO getEmployeeById(int employeeId){
+  public EmployeeDTO getEmployeeById(Long employeeId){
     return employeeService.getEmployeeById(employeeId);
   }
 

@@ -11,8 +11,8 @@ public class EmployeeService {
   @Autowired
   private EmployeeRepository employeeRepository;
 
-  public EmployeeDTO getEmployeeById(int employeeId) {
-    Employee employee = employeeRepository.findById(employeeId);
+  public EmployeeDTO getEmployeeById(Long employeeId) {
+    Employee employee = employeeRepository.findById(employeeId).get();
 
     return EmployeeDTO.builder()
         .firstName(employee.getFirstName())

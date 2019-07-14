@@ -1,10 +1,10 @@
 package com.example.employeepostgres.employee;
 
 import com.example.employeepostgres.employee.entity.Employee;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class EmployeeRepository {
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-  public Employee findById(int i) {
-    return null;
-  }
+  Optional<Employee> findById(Long i);
 }

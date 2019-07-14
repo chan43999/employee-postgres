@@ -23,7 +23,7 @@ public class EmployeeControllerTest {
   public void should_get_employee_when_get_employee_by_id_given_employee_id() {
 
     //given
-    int employeeId = 1;
+    Long employeeId = 1l;
     EmployeeDTO employeeDTO = EmployeeDTO.builder()
         .firstName("firstName")
         .lastName("lastName")
