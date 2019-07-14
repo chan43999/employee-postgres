@@ -12,6 +12,7 @@ services:
       POSTGRES_PASSWORD: local
   employee:
     image: chan43999/employee
+    container_name: employee
     ports:
       - "8080:8080"
 volumes:
