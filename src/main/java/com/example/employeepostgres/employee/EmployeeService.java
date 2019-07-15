@@ -1,5 +1,6 @@
 package com.example.employeepostgres.employee;
 
+import com.example.employeepostgres.employee.dto.EmployeeCreationResponse;
 import com.example.employeepostgres.employee.dto.EmployeeDTO;
 import com.example.employeepostgres.employee.entity.Employee;
 import com.example.employeepostgres.exception.ResourceNotFoundException;
@@ -22,5 +23,9 @@ public class EmployeeService {
         .firstName(employee.getFirstName())
         .lastName(employee.getLastName())
         .build();
+  }
+
+  public EmployeeCreationResponse createEmployee(EmployeeDTO employeeDTO) {
+    return null;
   }
 }
