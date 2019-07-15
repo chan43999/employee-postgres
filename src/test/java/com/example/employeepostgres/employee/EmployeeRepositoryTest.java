@@ -29,4 +29,20 @@ public class EmployeeRepositoryTest {
     assertTrue(resultEmployee.isPresent());
     assertEquals(employee, resultEmployee.get());
   }
+
+  @Test
+  void should_get_employee_with_id_when_save_given_employee() {
+
+    // given
+    Employee employee = Employee.builder()
+        .firstName("firstName")
+        .lastName("lastName")
+        .build();
+
+    // when
+    Employee resultEmployee = employeeRepository.save(employee);
+
+    // then
+    assertEquals(new Long(1l), resultEmployee.getId());
+  }
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+import com.example.employeepostgres.employee.dto.EmployeeCreationResponse;
 import com.example.employeepostgres.employee.dto.EmployeeDTO;
 import com.example.employeepostgres.employee.entity.Employee;
 import com.example.employeepostgres.exception.ResourceNotFoundException;
@@ -50,5 +51,63 @@ public class EmployeeServiceTest {
         ResourceNotFoundException.class,
         () -> employeeService.getEmployeeById(employeeId),
         "Customer id " + employeeId + " is not found");
+  }
+
+  @Test
+  void should_get_employee_creation_response_id_1_when_create_employee_given_employee_request_body() {
+
+    // given
+    EmployeeDTO employeeRequestBody =
+        EmployeeDTO.builder().firstName("firstName").lastName("lastName").build();
+
+    Employee employee = Employee.builder()
+        .firstName("firstName")
+        .lastName("lastName")
+        .build();
+
+    Employee savedEmployee = Employee.builder()
+        .id(1l)
+        .firstName("firstName")
+        .lastName("lastName")
+        .build();
+    when(employeeRepository.save(employee)).thenReturn(savedEmployee);
+
+    // when
+    EmployeeCreationResponse employeeCreationResponse = employeeService.createEmployee(employeeRequestBody);
+
+    // then
+    EmployeeCreationResponse expectEmployeeCreationResponse =
+        EmployeeCreationResponse.builder().id(1l).url("/employees/1").build();
+
+    assertEquals(expectEmployeeCreationResponse, employeeCreationResponse);
+  }
+
+  @Test
+  void should_get_employee_creation_response_id_2_when_create_employee_given_employee_request_body() {
+
+    // given
+    EmployeeDTO employeeRequestBody =
+        EmployeeDTO.builder().firstName("firstName").lastName("lastName").build();
+
+    Employee employee = Employee.builder()
+        .firstName("firstName")
+        .lastName("lastName")
+        .build();
+
+    Employee savedEmployee = Employee.builder()
+        .id(2l)
+        .firstName("firstName")
+        .lastName("lastName")
+        .build();
+    when(employeeRepository.save(employee)).thenReturn(savedEmployee);
+
+    // when
+    EmployeeCreationResponse employeeCreationResponse = employeeService.createEmployee(employeeRequestBody);
+
+    // then
+    EmployeeCreationResponse expectEmployeeCreationResponse =
+        EmployeeCreationResponse.builder().id(2l).url("/employees/2").build();
+
+    assertEquals(expectEmployeeCreationResponse, employeeCreationResponse);
   }
 }

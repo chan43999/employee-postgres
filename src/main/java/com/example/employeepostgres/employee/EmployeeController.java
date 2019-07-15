@@ -2,6 +2,7 @@ package com.example.employeepostgres.employee;
 
 import com.example.employeepostgres.employee.dto.EmployeeCreationResponse;
 import com.example.employeepostgres.employee.dto.EmployeeDTO;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ public class EmployeeController {
   }
 
   @PostMapping
-  public EmployeeCreationResponse createEmployee(EmployeeDTO employeeRequestBody) {
+  public EmployeeCreationResponse createEmployee(@Valid EmployeeDTO employeeRequestBody) {
     return employeeService.createEmployee(employeeRequestBody);
   }
 }

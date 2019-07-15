@@ -26,6 +26,17 @@ public class EmployeeService {
   }
 
   public EmployeeCreationResponse createEmployee(EmployeeDTO employeeDTO) {
-    return null;
+
+    Employee savedEmployee = employeeRepository.save(Employee.builder()
+        .firstName(employeeDTO.getFirstName())
+        .lastName(employeeDTO.getLastName())
+        .build());
+
+    Long employeeId = savedEmployee.getId();
+
+    return EmployeeCreationResponse.builder()
+        .url("/employees/"+ employeeId)
+        .id(employeeId)
+        .build();
   }
 }
